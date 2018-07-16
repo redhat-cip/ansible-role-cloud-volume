@@ -1,19 +1,22 @@
 ---
 - hosts: localhost
   tasks:
+    - name: Determine platform for which to run the tests
+      set_fact:
+        host: "{{ lookup('env', 'ANSIBLE_CLOUD_PROVIDER') }}"
+
+- name: Running tests for '{{ hostvars.localhost.host }}'
+  hosts: '{{ hostvars.localhost.host }}'
+  tasks:
     - name: Create volume
       include_role:
         name: ansible-role-cloud-volume
       vars:
         ansible_cloud_provider: "{{ lookup('env', 'ANSIBLE_CLOUD_PROVIDER') }}"
-        cloud_volume_name: ansiblecloud-testvolume
-        cloud_volume_size: 20
-        cloud_volume_region: AMS3
 
     - name: Delete volume
       include_role:
         name: ansible-role-cloud-volume
       vars:
         ansible_cloud_provider: "{{ lookup('env', 'ANSIBLE_CLOUD_PROVIDER') }}"
-        cloud_volume_name: ansiblecloud-testvolume
-        cloud_server_state: absent
+        cloud_volume_state: absent
