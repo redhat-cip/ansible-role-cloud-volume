@@ -1,0 +1,7 @@
+---
+- name: Create volume
+  os_volume:
+    display_name: '{{ cloud_volume_name }}'
+    size: '{{ cloud_volume_size }}'
+    region_name: '{{ cloud_volume_region }}'
+    state: '{{ cloud_volume_state|default("present") }}'

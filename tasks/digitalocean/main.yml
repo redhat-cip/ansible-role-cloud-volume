@@ -1,0 +1,8 @@
+---
+- name: Create volume
+  digital_ocean_block_storage:
+    volume_name: '{{ cloud_volume_name }}'
+    command: create
+    block_size: '{{ cloud_volume_size }}'
+    region: '{{ cloud_volume_region }}'
+    state: '{{ cloud_volume_state|default("present") }}'
