@@ -7,16 +7,15 @@
 
 - name: Running tests for '{{ hostvars.localhost.host }}'
   hosts: '{{ hostvars.localhost.host }}'
+  vars:
+      ansible_cloud_provider: "{{ lookup('env', 'ANSIBLE_CLOUD_PROVIDER') }}"
   tasks:
     - name: Create volume
       include_role:
         name: ansible-role-cloud-volume
-      vars:
-        ansible_cloud_provider: "{{ lookup('env', 'ANSIBLE_CLOUD_PROVIDER') }}"
 
     - name: Delete volume
       include_role:
         name: ansible-role-cloud-volume
       vars:
-        ansible_cloud_provider: "{{ lookup('env', 'ANSIBLE_CLOUD_PROVIDER') }}"
         cloud_volume_state: absent

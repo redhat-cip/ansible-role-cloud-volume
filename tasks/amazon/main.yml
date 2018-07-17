@@ -1,8 +1,8 @@
 ---
-- name: Create volume
+- name: Manage volume
   ec2_vol:
     name: '{{ cloud_volume_name }}'
     volume_size: '{{ cloud_volume_size }}'
     region: '{{ cloud_volume_region.split(":")[0] }}'
-    state: '{{ cloud_volume_state|default("present") }}'
     zone: '{{ cloud_volume_region.split(":")[1] }}'
+    state: '{{ cloud_volume_state|default("present") }}'
