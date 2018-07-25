@@ -1,0 +1,7 @@
+---
+- name: Manage volume
+  vr_block_storage:
+    name: '{{ cloud_volume_name }}'
+    size: '{{ cloud_volume_size }}'
+    region: '{{ cloud_volume_region }}'
+    state: '{{ cloud_volume_state|default("present") }}'
