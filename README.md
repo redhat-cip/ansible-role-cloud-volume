@@ -15,7 +15,7 @@ Please refer to [ansible-cloud](https://github.com/redhat-cip/ansible-cloud) [RE
 |-----------------------------|-----------|---------|--------|---------------------------------|
 | cloud_volume_name           | True      | N/A     | String | Name of the volume              |
 | cloud_volume_size           | True      | N/A     | Int    | Size of the volume              |
-| cloud_volume_region         | True      | N/A     | String | Region when the volume is       |
+| cloud_volume_region         | True      | N/A     | String | Region where the volume is      |
 | cloud_volume_state          | False     | present | String | Should the volume be present    |
 
 
@@ -33,7 +33,7 @@ Please refer to [ansible-cloud](https://github.com/redhat-cip/ansible-cloud) [RE
       vars:
         cloud_volume_name: ansiblecloud-testvolume
         cloud_volume_size: 20
-        cloud_volume_region: nova
+        cloud_volume_region: regionOne
 ```
 
 
